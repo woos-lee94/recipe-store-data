@@ -3,6 +3,7 @@
 아이폰 앱 '레시피 저장소'가 읽는 '추천 레시피' 데이터예요. 앱에는 관리자 기능이 없어요. 앱은 `data/version.json`을 자주 받아 보고, `recommend` 값이 바뀌면 `data/recommend.json`을 raw.githubusercontent.com에서 다시 받아 가요.
 
 - 예약 작업 '레시피 추천'(매일 05:10, 실제 추천은 3일마다): `pipeline/RUNBOOK.md` 순서를 그대로 따라요. 추천 날이 아니면 아무것도 커밋하지 않고 끝내요.
+  - 이 저장소가 처음부터 붙은 전용 세션을 매일 깨우는 방식이에요(2026-10-20). 예약 실행 세션 안에서 add_repo로 저장소를 붙이는 방식은 도구가 없어 실패했어요. 다시 만들 때도 저장소가 붙은 세션으로 돌게 해요.
 - 레시피 작성 규칙·제철 재료·단위·예시: `pipeline/recipe_spec.md`.
 - 도구: `python3 pipeline/round.py status|merge|add|checked`. 판 더하기, 지금 판에 레시피 더하기, version.json·history.json·requests.json 갱신을 한꺼번에 해요. data 파일은 손으로 고치지 말고 round.py로 바꿔요.
 - 검증: `python3 pipeline/validate.py` (오류 0이어야 올려요). `validate.py work/rec_1.json`처럼 레시피 하나·판 하나 파일도 검사해요.
